@@ -27,7 +27,8 @@
     "graphql": "^16.8.1",
     "next": "15.4.4",
     "payload": "3.52.0",
-    "react": "19.1.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
     "sharp": "0.34.2",
     "@payloadcms/db-vercel-postgres": "3.52.0"
   },
