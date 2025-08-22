@@ -84,8 +84,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    portfolio: Portfolio;
+  };
+  globalsSelect: {
+    portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -284,6 +288,174 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio".
+ */
+export interface Portfolio {
+  id: number;
+  nav: {
+    logo: number | Media;
+    links: {
+      label: string;
+      url: string;
+      id?: string | null;
+    }[];
+    buttons?:
+      | {
+          label: string;
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  header: {
+    name: string;
+    profession?: string | null;
+    header_image?: (number | null) | Media;
+    background_image?: (number | null) | Media;
+  };
+  about: {
+    about: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    profile_image: number | Media;
+  };
+  education?: {
+    education_items?:
+      | {
+          title?: string | null;
+          date?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  skills?: {
+    skills_items?:
+      | {
+          name?: string | null;
+          type?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  footer: {
+    copyright: string;
+    social_links?:
+      | {
+          platform: string;
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+    logo: number | Media;
+    links?:
+      | {
+          label: string;
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio_select".
+ */
+export interface PortfolioSelect<T extends boolean = true> {
+  nav?:
+    | T
+    | {
+        logo?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              id?: T;
+            };
+        buttons?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              id?: T;
+            };
+      };
+  header?:
+    | T
+    | {
+        name?: T;
+        profession?: T;
+        header_image?: T;
+        background_image?: T;
+      };
+  about?:
+    | T
+    | {
+        about?: T;
+        profile_image?: T;
+      };
+  education?:
+    | T
+    | {
+        education_items?:
+          | T
+          | {
+              title?: T;
+              date?: T;
+              id?: T;
+            };
+      };
+  skills?:
+    | T
+    | {
+        skills_items?:
+          | T
+          | {
+              name?: T;
+              type?: T;
+              id?: T;
+            };
+      };
+  footer?:
+    | T
+    | {
+        copyright?: T;
+        social_links?:
+          | T
+          | {
+              platform?: T;
+              url?: T;
+              id?: T;
+            };
+        logo?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
