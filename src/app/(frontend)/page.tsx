@@ -26,6 +26,12 @@ export default async function HomePage() {
         }
       >
         <nav>
+          <Image
+            src={navLogo!.url}
+            alt={navLogo?.alt || 'Navigation Logo'}
+            width={100}
+            height={100}
+          />
           {portfolio.nav.links.map((link) => (
             <Link key={link.id} href={link.url}>
               {link.label}
