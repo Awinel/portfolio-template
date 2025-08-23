@@ -109,10 +109,12 @@ export const Portfolio: GlobalConfig = {
             {
               name: 'title',
               type: 'text',
+              required: true,
             },
             {
               name: 'date',
               type: 'text',
+              required: true,
             },
           ],
         },
@@ -130,10 +132,40 @@ export const Portfolio: GlobalConfig = {
             {
               name: 'name',
               type: 'text',
+              required: true,
             },
             {
               name: 'type',
               type: 'text',
+              required: true,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'projects',
+      type: 'group',
+      fields: [
+        {
+          name: 'projects_items',
+          label: 'Projects Items',
+          type: 'array',
+          fields: [
+            {
+              name: 'name',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'type',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'url',
+              type: 'text',
+              required: true,
             },
           ],
         },

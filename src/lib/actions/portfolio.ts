@@ -5,6 +5,7 @@ export default async function Portfolio() {
   const payload = await getPayload({ config: buildConfig })
   const portfolio = await payload.findGlobal({
     slug: 'portfolio',
+    depth: 1,
   })
 
   return portfolio

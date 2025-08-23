@@ -337,8 +337,8 @@ export interface Portfolio {
   education?: {
     education_items?:
       | {
-          title?: string | null;
-          date?: string | null;
+          title: string;
+          date: string;
           id?: string | null;
         }[]
       | null;
@@ -346,8 +346,18 @@ export interface Portfolio {
   skills?: {
     skills_items?:
       | {
-          name?: string | null;
-          type?: string | null;
+          name: string;
+          type: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  projects?: {
+    projects_items?:
+      | {
+          name: string;
+          type: string;
+          url: string;
           id?: string | null;
         }[]
       | null;
@@ -430,6 +440,18 @@ export interface PortfolioSelect<T extends boolean = true> {
           | {
               name?: T;
               type?: T;
+              id?: T;
+            };
+      };
+  projects?:
+    | T
+    | {
+        projects_items?:
+          | T
+          | {
+              name?: T;
+              type?: T;
+              url?: T;
               id?: T;
             };
       };
