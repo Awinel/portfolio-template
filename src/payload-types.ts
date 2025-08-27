@@ -296,6 +296,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Portfolio {
   id: number;
   nav: {
+    style?: ('default' | 'o1') | null;
     logo: number | Media;
     links: {
       label: string;
@@ -391,6 +392,7 @@ export interface PortfolioSelect<T extends boolean = true> {
   nav?:
     | T
     | {
+        style?: T;
         logo?: T;
         links?:
           | T

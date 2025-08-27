@@ -11,6 +11,21 @@ export const Portfolio: GlobalConfig = {
       type: 'group',
       fields: [
         {
+          name: 'style',
+          type: 'select',
+          defaultValue: 'default',
+          options: [
+            {
+              label: 'Default',
+              value: 'default',
+            },
+            {
+              label: 'Option 1',
+              value: 'o1',
+            },
+          ],
+        },
+        {
           name: 'logo',
           type: 'upload',
           relationTo: 'media',

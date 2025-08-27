@@ -1,11 +1,13 @@
 import React from 'react'
 import Portfolio from '@/lib/actions/portfolio'
-import { ThemeToggle } from '@/components/theme/theme-toggle'
+
 import Image from 'next/image'
 import { transformMedia } from '@/lib/helper/transformMedia'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import Nav from '@/components/nav'
+import Footer from '@/components/footer'
 
 export default async function HomePage() {
   const portfolio = await Portfolio()
@@ -13,7 +15,6 @@ export default async function HomePage() {
   const backgroundImage = transformMedia(portfolio.header.background_image)
   const aboutImage = transformMedia(portfolio.about.profile_image)
   const footerLogo = transformMedia(portfolio.footer.logo)
-  const navLogo = transformMedia(portfolio.nav.logo)
 
   return (
     <>
@@ -25,25 +26,7 @@ export default async function HomePage() {
           backgroundImage?.url ? { backgroundImage: `url(${backgroundImage.url})` } : undefined
         }
       >
-        <nav>
-          <Image
-            src={navLogo!.url}
-            alt={navLogo?.alt || 'Navigation Logo'}
-            width={100}
-            height={100}
-          />
-          {portfolio.nav.links.map((link) => (
-            <Link key={link.id} href={link.url}>
-              {link.label}
-            </Link>
-          ))}
-          {portfolio.nav.buttons &&
-            portfolio.nav.buttons.map((button) => (
-              <Link key={button.id} href={button.url}>
-                {button.label}
-              </Link>
-            ))}
-        </nav>
+        <Nav />
 
         <h1 className="text-foreground">{portfolio.header.name}</h1>
         <h2>{portfolio.header.profession}</h2>
@@ -130,39 +113,7 @@ export default async function HomePage() {
           </section>
         )}
       </main>
-      <footer>
-        {footerLogo && (
-          <div>
-            <Image
-              src={footerLogo?.url}
-              alt={footerLogo?.alt || 'Footer Logo'}
-              width={100}
-              height={100}
-            />
-          </div>
-        )}
-        <div>{portfolio.footer.copyright}</div>
-        {portfolio.footer.links && (
-          <div>
-            {portfolio.footer.links.map((link) => (
-              <Link key={link.id} href={link.url}>
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        )}
-        {portfolio.footer.social_links && (
-          <div>
-            {portfolio.footer.social_links.map((link) => (
-              <Link key={link.id} href={link.url}>
-                {link.platform}
-              </Link>
-            ))}
-          </div>
-        )}
-
-        <ThemeToggle />
-      </footer>
+      <Footer />
     </>
   )
 }
