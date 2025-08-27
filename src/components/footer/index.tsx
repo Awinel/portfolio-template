@@ -13,6 +13,30 @@ export default function Footer() {
   return (
     <>
       <footer className="flex flex-col md:grid grid-cols-3 md:place-items-center justify-between items-center p-4 bg-primary-foreground border-2 border-border">
+        {footer.social_links && (
+          <div className="col-start-2 row-start-1">
+            {footer.social_links.map((link) => (
+              <Link key={link.id} href={link.url}>
+                {link.platform}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {footer.links && (
+          <div className="col-start-2 row-start-2">
+            {footer.links.map((link) => (
+              <Link key={link.id} href={link.url}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        <div className="col-start-3">
+          <ThemeToggle />
+        </div>
+
         {footerLogo && (
           <div className="col-start-1 row-start-1">
             <Image
@@ -23,29 +47,9 @@ export default function Footer() {
             />
           </div>
         )}
+
         <div className="col-start-2 row-start-3">
           &copy; {new Date().getFullYear()} {footer.copyright}
-        </div>
-        {footer.links && (
-          <div className="col-start-2 row-start-1">
-            {footer.links.map((link) => (
-              <Link key={link.id} href={link.url}>
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        )}
-        {footer.social_links && (
-          <div className="col-start-2 row-start-2">
-            {footer.social_links.map((link) => (
-              <Link key={link.id} href={link.url}>
-                {link.platform}
-              </Link>
-            ))}
-          </div>
-        )}
-        <div className="col-start-3">
-          <ThemeToggle />
         </div>
       </footer>
     </>
