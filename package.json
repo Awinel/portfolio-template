@@ -27,7 +27,6 @@
     "@tailwindcss/postcss": "^4.1.11",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
-    "daisyui": "^5.0.50",
     "dotenv": "16.4.7",
     "graphql": "^16.8.1",
     "lucide-react": "^0.541.0",

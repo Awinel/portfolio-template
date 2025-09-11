@@ -12,7 +12,7 @@ export default function Nav() {
   return (
     <>
       {nav.style === 'default' && (
-        <nav className="flex justify-between items-center p-2 bg-primary-foreground shadow-2xl border-border border-2">
+        <nav className="flex justify-between items-center p-2 bg-primary-foreground shadow-2xl border-border border-2 fixed w-full top-0 left-0 z-10">
           <Link href="/">
             <Image
               src={navLogo!.url}

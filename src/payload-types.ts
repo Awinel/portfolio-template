@@ -314,7 +314,8 @@ export interface Portfolio {
   header: {
     name: string;
     profession?: string | null;
-    header_image?: (number | null) | Media;
+    header_image_small?: (number | null) | Media;
+    header_image_large?: (number | null) | Media;
     background_image?: (number | null) | Media;
   };
   about: {
@@ -333,13 +334,15 @@ export interface Portfolio {
       };
       [k: string]: unknown;
     };
-    profile_image: number | Media;
+    profile_image_small?: (number | null) | Media;
+    profile_image_large?: (number | null) | Media;
   };
   education?: {
     education_items?:
       | {
           title: string;
           date: string;
+          certification_image?: (number | null) | Media;
           id?: string | null;
         }[]
       | null;
@@ -414,14 +417,16 @@ export interface PortfolioSelect<T extends boolean = true> {
     | {
         name?: T;
         profession?: T;
-        header_image?: T;
+        header_image_small?: T;
+        header_image_large?: T;
         background_image?: T;
       };
   about?:
     | T
     | {
         about?: T;
-        profile_image?: T;
+        profile_image_small?: T;
+        profile_image_large?: T;
       };
   education?:
     | T
@@ -431,6 +436,7 @@ export interface PortfolioSelect<T extends boolean = true> {
           | {
               title?: T;
               date?: T;
+              certification_image?: T;
               id?: T;
             };
       };

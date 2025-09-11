@@ -12,7 +12,7 @@ const footerLogo = transformMedia(footer.logo)
 export default function Footer() {
   return (
     <>
-      <footer className="flex flex-col md:grid grid-cols-3 md:place-items-center justify-between items-center p-4 bg-primary-foreground border-2 border-border">
+      <footer className="flex flex-col md:grid grid-cols-3 md:place-items-center justify-between items-center p-4 bg-primary-foreground border-2 border-border relative bottom-0 z-10">
         {footer.social_links && (
           <div className="col-start-2 row-start-1">
             {footer.social_links.map((link) => (
